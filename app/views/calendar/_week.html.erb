@@ -1,0 +1,7 @@
+<%= tag.div id: date.beginning_of_week, class: "grid grid-cols-7" do %>
+  <% date.all_week.each do |day| %>
+    <div class="border min-h-60 <%= today_class(day) %>">
+      <%= day %>
+    </div>
+  <% end %>
+<% end %>

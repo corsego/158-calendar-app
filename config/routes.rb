@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "events#index"
   get "calendar/month", to: 'calendar#month'
+  get "calendar/week", to: 'calendar#week'
+  post "calendar/week", to: 'calendar#week'
 end
