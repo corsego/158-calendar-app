@@ -1,0 +1,19 @@
+<%= @date.strftime('%B %Y')%>
+
+<div class="grid grid-cols-7">
+  <% Date::ABBR_DAYNAMES.rotate.each do |weekday| %>
+    <div>
+      <%= weekday %>
+    </div>
+  <% end %>
+</div>
+
+<div id="calendar" style="height: 600px;" class="bg-slate-100 overflow-auto">
+  <%= tag.div id: :prev do %>
+    <%= button_to 'prev', calendar_week_path(date: @date, direction: :prev) %>
+  <% end %>
+
+  <%= render 'calendar/week', date: @date %>
+
+  <%= turbo_frame_tag :next, src: calendar_week_path(format: :turbo_stream, date: @date, direction: :next), loading: :lazy %>
+</div>

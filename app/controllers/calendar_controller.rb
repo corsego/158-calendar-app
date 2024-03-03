@@ -4,4 +4,8 @@ class CalendarController < ApplicationController
     # @events = Event.where(start_date: @date.all_month)
     @events = Event.where(start_date: @date.all_month).group_by { |e| e.start_date.to_date }
   end
+  
+  def week
+    @date = Date.parse(params.fetch(:date, Date.today.to_s))
+  end
 end
